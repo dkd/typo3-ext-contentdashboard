@@ -1,0 +1,21 @@
+{
+    "name": "dkd/typo3-ext-contentdashboard",
+    "type": "typo3-cms-extension",
+    "description": "TYPO3 Extension Content Dashboard",
+    "keywords": ["cmis", "content dashboard", "typo3"],
+    "homepage": "https://phabricator.dkd.de/diffusion/EXTCD/",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Sascha Egerer",
+            "homepage": "http://www.dkd.de",
+            "role": "Developer"
+        }
+    ],
+    "require-dev": {
+        "squizlabs/php_codesniffer": "1.*",
+        "phpunit/phpunit": "4.1.*",
+        "typo3-ci/typo3sniffpool": "dev-master",
+        "typo3-ci/typo3cms": "dev-master"
+    }
+}
