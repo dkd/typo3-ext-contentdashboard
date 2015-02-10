@@ -1,1 +1,8 @@
-vendor
+.idea
+/vendor
+/uploads
+/typo3conf
+/typo3temp
+/typo3_src
+/typo3
+/index.php

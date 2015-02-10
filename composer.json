@@ -1,5 +1,5 @@
 {
-    "name": "dkd/typo3-ext-contentdashboard",
+    "name": "dkd/contentdashboard",
     "type": "typo3-cms-extension",
     "description": "TYPO3 Extension Content Dashboard",
     "keywords": ["cmis", "content dashboard", "typo3"],
@@ -12,10 +12,22 @@
             "role": "Developer"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Dkd\\Contentdashboard\\": "Classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dkd\\Contentdashboard\\Unit\\": "Tests/Unit/"
+        }
+    },
     "require-dev": {
         "squizlabs/php_codesniffer": "1.*",
-        "phpunit/phpunit": "4.1.*",
+        "phpunit/phpunit": "~4.4.5",
+        "mikey179/vfsStream": "~1.4.0",
         "typo3-ci/typo3sniffpool": "dev-master",
-        "typo3-ci/typo3cms": "dev-master"
+        "typo3-ci/typo3cms": "dev-master",
+        "typo3/cms": "~6.2.9"
     }
 }
