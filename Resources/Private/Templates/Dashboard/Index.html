@@ -5,5 +5,9 @@
 </f:section>
 
 <f:section name="Main">
-    Contentdashboard: index
+    <h2><f:translate key="dashboard.assets.title" /></h2>
+    <hr />
+    <div id="dashboard-asset-list">
+        {f:render(partial: 'Asset/Brief', arguments: '{_all}') -> f:for(each: objects, as: 'object', iteration: 'iteration')}
+    </div>
 </f:section>

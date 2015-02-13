@@ -1,4 +1,5 @@
 <f:be.container pageTitle="Extension Manager" enableClickMenu="false" loadPrototype="false"
+                includeCssFiles="{0: '{f:uri.resource(path: \'Stylesheets/Default.css\')}'}"
                 loadScriptaculous="false" loadExtJs="false" loadExtJsTheme="true" loadJQuery="true">
     <div id="typo3-docheader">
         <div class="typo3-docheader-functions">
@@ -12,7 +13,7 @@
         </div>
     </div>
     <div id="typo3-docbody">
-        <div id="typo3-inner-docbody">
+        <div id="typo3-inner-docbody container">
             <f:render section="Main" />
         </div>
     </div>

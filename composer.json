@@ -19,8 +19,16 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Dkd\\Contentdashboard\\Unit\\": "Tests/Unit/"
-        }
+            "Dkd\\Contentdashboard\\Tests\\": "Tests/"
+        },
+        "classmap": [
+            "typo3/sysext/core",
+            "typo3/sysext/backend",
+            "typo3/sysext/frontend",
+            "typo3/sysext/extbase",
+            "typo3/sysext/fluid",
+            "typo3/sysext/lang"
+        ]
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "1.*",
@@ -29,5 +37,11 @@
         "typo3-ci/typo3sniffpool": "dev-master",
         "typo3-ci/typo3cms": "dev-master",
         "typo3/cms": "~6.2.9"
-    }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://composer.typo3.org"
+        }
+    ]
 }

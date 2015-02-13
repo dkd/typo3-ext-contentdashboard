@@ -1,0 +1,17 @@
+<div class="container asset asset-brief">
+    <h4>
+        <f:link.action action="detail" arguments="{objectId: object.objectId}" class="pull-right text-muted text-lead">
+            <i class="t3icon fa fa-chevron-right icon icon-chevron-right glyphicon glyphicon-chevron-right"></i>
+        </f:link.action>
+        {object.title}
+    </h4>
+    <div class="row">
+        <div class="col-xs-6">
+            <img src="" class="dummy-image" />
+        </div>
+        <div class="col-xs-6 asset-brief-meters">
+            <h4><f:translate key="dashboard.assets.values" /></h4>
+            <f:render partial="Asset/Meters" arguments="{_all}" />
+        </div>
+    </div>
+</div>

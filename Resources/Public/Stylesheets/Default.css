@@ -1,0 +1,48 @@
+.dummy-image {
+	width: 130px;
+	height: 80px;
+	border: 1px solid #333333;
+	background-color: #CCCCCC;
+}
+
+.asset-brief {
+	padding-bottom: 2em;
+}
+
+.asset-brief:hover {
+	background-color: #ECECEC;
+}
+
+.asset-brief-meters {
+	border-left: 1px solid #666666;
+	padding-bottom: 0.8em;
+}
+
+.meter-container {
+	font-style: italic;
+}
+
+ul.meter {
+	list-style-type: none;
+	padding-left: 0px;
+	margin: 5px 5px 0px 0px;
+	display: inline-block;
+}
+
+ul.meter li {
+	display: block;
+	float: left;
+	width: 0.8em;
+	height: 0.8em;
+	border: 1px solid #000000;
+	margin-right: 3px;
+}
+
+ul.meter li.filled {
+	border-color: #999999;
+	background-color: #999999;
+}
+
+ul.meter li.empty {
+	border-color: #DDDDDD;
+}

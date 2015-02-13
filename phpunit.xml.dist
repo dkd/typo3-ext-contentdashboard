@@ -16,7 +16,8 @@
 >
 	<testsuites>
 		<testsuite name="Extension tests">
-			<directory>/Tests/Unit/</directory>
+			<directory>Tests/Unit/</directory>
+			<exclude>Tests/bootstrap.php</exclude>
 		</testsuite>
 	</testsuites>
 	<filter>

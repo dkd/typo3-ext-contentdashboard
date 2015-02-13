@@ -1,13 +1,19 @@
 <?php
 namespace Dkd\Contentdashboard\Unit\Controller;
 
-class ArchiveController extends \TYPO3\CMS\Core\Tests\UnitTestCase {
+use Dkd\Contentdashboard\Controller\ArchiveController;
+use TYPO3\CMS\Core\Tests\UnitTestCase;
+
+/**
+ * Class ArchiveControllerTest
+ */
+class ArchiveControllerTest extends UnitTestCase {
 
 	/**
 	 * @return void
 	 */
 	public function testControllerReturnsNull() {
-		$archiveController = new \Dkd\Contentdashboard\Controller\ArchiveController();
+		$archiveController = new ArchiveController();
 		$this->assertNull($archiveController->indexAction());
 	}
 }

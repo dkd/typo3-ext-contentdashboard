@@ -19,6 +19,39 @@
             <trans-unit id="view.archive" xml:space="preserve">
                 <source>Archive</source>
             </trans-unit>
+            <trans-unit id="dashboard.assets.title" xml:space="preserve">
+                <source>Assets</source>
+            </trans-unit>
+            <trans-unit id="dashboard.assets.values" xml:space="preserve">
+                <source>Current values</source>
+            </trans-unit>
+            <trans-unit id="dashboard.assets.values.preservation" xml:space="preserve">
+                <source>Preservation value</source>
+            </trans-unit>
+            <trans-unit id="dashboard.assets.values.buoyancy" xml:space="preserve">
+                <source>Memory buoyancy</source>
+            </trans-unit>
+            <trans-unit id="dashboard.assets.meters.noValue" xml:space="preserve">
+                <source>No value</source>
+            </trans-unit>
+            <trans-unit id="dashboard.assets.meters.values.0" xml:space="preserve">
+                <source>Forget</source>
+            </trans-unit>
+            <trans-unit id="dashboard.assets.meters.values.1" xml:space="preserve">
+                <source>Cold</source>
+            </trans-unit>
+            <trans-unit id="dashboard.assets.meters.values.2" xml:space="preserve">
+                <source>Neutral</source>
+            </trans-unit>
+            <trans-unit id="dashboard.assets.meters.values.3" xml:space="preserve">
+                <source>Luke-warm</source>
+            </trans-unit>
+            <trans-unit id="dashboard.assets.meters.values.4" xml:space="preserve">
+                <source>Warm</source>
+            </trans-unit>
+            <trans-unit id="dashboard.assets.meters.values.5" xml:space="preserve">
+                <source>Hot</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
