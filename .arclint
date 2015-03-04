@@ -1,4 +1,5 @@
 {
+  "exclude": "(^Resources/Public/Themes/Bootstrap/)i",
   "linters": {
     "JavaScript Linter": {
       "type": "jshint",

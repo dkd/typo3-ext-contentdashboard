@@ -1,20 +1,36 @@
+{namespace dash=Dkd\Contentdashboard\ViewHelpers}
 <f:be.container pageTitle="Extension Manager" enableClickMenu="false" loadPrototype="false"
-                includeCssFiles="{0: '{f:uri.resource(path: \'Stylesheets/Default.css\')}'}"
+                includeCssFiles="{dash:stylesheets()}" enableJumpToUrl="true"
                 loadScriptaculous="false" loadExtJs="false" loadExtJsTheme="true" loadJQuery="true">
-    <div id="typo3-docheader">
-        <div class="typo3-docheader-functions">
-            <f:be.menus.actionMenu>
-                <f:be.menus.actionMenuItem label="{f:translate(key: 'view.dashboard')}" controller="Dashboard" action="index" />
-                <f:be.menus.actionMenuItem label="{f:translate(key: 'view.archive')}" controller="Archive" action="index" />
-            </f:be.menus.actionMenu>
+    <div class="typo3-fullDoc">
+        <div id="typo3-docheader">
+            <div class="typo3-docheader-functions">
+                <f:be.menus.actionMenu>
+                    <f:be.menus.actionMenuItem
+                            label="{f:translate(key: 'view.dashboard')}"
+                            controller="Dashboard" action="index" />
+                    <f:be.menus.actionMenuItem
+                            label="{f:translate(key: 'view.archive')}"
+                            controller="Archive" action="index" />
+                </f:be.menus.actionMenu>
+            </div>
+            <div class="typo3-docheader-buttons">
+                <div class="left">
+                    <div class="buttongroup">
+                        <f:render section="Buttons" />
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="buttongroup">
+                        <f:be.buttons.shortcut />
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="typo3-docheader-buttons">
-            <f:render section="Buttons" />
-        </div>
-    </div>
-    <div id="typo3-docbody">
-        <div id="typo3-inner-docbody container">
-            <f:render section="Main" />
+        <div id="typo3-docbody">
+            <div id="typo3-inner-docbody container">
+                <f:render section="Main" />
+            </div>
         </div>
     </div>
 </f:be.container>
