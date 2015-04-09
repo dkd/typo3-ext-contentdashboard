@@ -3,7 +3,18 @@
         <f:link.action action="detail" arguments="{objectId: object.objectId}" class="pull-right text-muted text-lead">
             <i class="t3icon fa fa-chevron-right icon icon-chevron-right glyphicon glyphicon-chevron-right"></i>
         </f:link.action>
-        {object.title}
+        <f:if condition="{object.baseType.id} == 'cmis:folder'">
+            <f:then>
+                <f:link.action action="index" arguments="{folder: object.id}">
+                    {object.name}
+                </f:link.action>
+            </f:then>
+            <f:else>
+                <f:link.action action="detail" arguments="{objectId: object.id}">
+                    {object.name}
+                </f:link.action>
+            </f:else>
+        </f:if>
     </h4>
     <div class="row">
         <div class="col-xs-6">

@@ -7,7 +7,13 @@
 <f:section name="Main">
     <h2><f:translate key="dashboard.assets.title" /></h2>
     <hr />
+    <h3>Folder: {folder.name}</h3>
+    <f:alias map="{parentFolder: folder.folderParent}">
+        <f:if condition="{parentFolder}">
+            <h4>Parent folder: <f:link.action action="index" arguments="{folder: parentFolder.id}">{parentFolder.name}</f:link.action></h4>
+        </f:if>
+    </f:alias>
     <div id="dashboard-asset-list">
-        {f:render(partial: 'Asset/Brief', arguments: '{_all}') -> f:for(each: objects, as: 'object', iteration: 'iteration')}
+        {f:render(partial: 'Asset/Brief', arguments: '{_all}') -> f:for(each: folder.children, as: 'object', iteration: 'iteration')}
     </div>
 </f:section>
