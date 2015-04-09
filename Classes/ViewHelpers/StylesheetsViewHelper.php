@@ -20,12 +20,13 @@ class StylesheetsViewHelper extends AbstractViewHelper {
 	 */
 	public function render() {
 		$path = $this->getPublicResourcePath();
-		$stylesheets = array(
-			$path . 'Stylesheets/Default.css'
-		);
+		$stylesheets = array();
 		if (TRUE === $this->isCoreVersionBelowSeven()) {
 			$stylesheets[] = $path . 'Themes/Bootstrap/css/bootstrap.min.css';
+			$stylesheets[] = $path . 'Stylesheets/TYPO3-6-2-compatibility.css';
 		}
+		$stylesheets[] = $path . 'Stylesheets/Default.css';
+
 		return $stylesheets;
 	}
 
