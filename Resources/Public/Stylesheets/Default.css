@@ -55,3 +55,8 @@ ul.meter li.filled {
 ul.meter li.empty {
     border-color: #DDDDDD;
 }
+
+.object-detail-trigger.opened i {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}

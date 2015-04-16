@@ -1,0 +1,15 @@
+{namespace dash=Dkd\Contentdashboard\ViewHelpers}
+<h4>Relations to object</h4>
+<table class="table table-bordered">
+    <tr>
+        <th>Path</th>
+        <th>Type</th>
+    </tr>
+    <f:for each="{dash:objectRelations(cmisObjectId: object.objectId)}" as="relation">
+        <tr>
+            <td>{relation.path}</td>
+            <td>{relation.type}</td>
+        </tr>
+    </f:for>
+</table>
+<hr>

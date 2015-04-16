@@ -2,9 +2,9 @@
 namespace Dkd\Contentdashboard\ViewHelpers;
 
 /**
- * Class StylesheetsViewHelper
+ * Class JavascriptViewHelper
  */
-class StylesheetsViewHelper extends AbstractResourcesViewHelper {
+class JavascriptViewHelper extends AbstractResourcesViewHelper {
 
 	/**
 	 * Returns an array (for feeding into f:be.container) of
@@ -18,11 +18,9 @@ class StylesheetsViewHelper extends AbstractResourcesViewHelper {
 		$path = $this->getPublicResourcePath();
 		$stylesheets = array();
 		if (TRUE === $this->isCoreVersionBelowSeven()) {
-			$stylesheets[] = $path . 'Fonts/FontAwesome/css/font-awesome.min.css';
-			$stylesheets[] = $path . 'Themes/Bootstrap/css/bootstrap.min.css';
-			$stylesheets[] = $path . 'Stylesheets/TYPO3-6-2-compatibility.css';
+			$stylesheets[] = $path . 'Themes/Bootstrap/js/bootstrap.min.js';
 		}
-		$stylesheets[] = $path . 'Stylesheets/Default.css';
+		$stylesheets[] = $path . 'Javascript/Dashboard.js';
 
 		return $stylesheets;
 	}

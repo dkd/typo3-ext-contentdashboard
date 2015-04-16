@@ -1,8 +1,6 @@
+{namespace dash=Dkd\Contentdashboard\ViewHelpers}
 <div class="container asset asset-brief">
     <h4>
-        <f:link.action action="detail" arguments="{objectId: object.objectId}" class="pull-right text-muted text-lead">
-            <i class="t3icon fa fa-chevron-right icon icon-chevron-right glyphicon glyphicon-chevron-right"></i>
-        </f:link.action>
         <f:if condition="{object.baseType.id} == 'cmis:folder'">
             <f:then>
                 <f:link.action action="index" arguments="{folder: object.id}">
@@ -10,9 +8,15 @@
                 </f:link.action>
             </f:then>
             <f:else>
-                <f:link.action action="detail" arguments="{objectId: object.id}">
+                <a href="#vh{object.id -> dash:format.htmlId()}" data-href="{f:uri.action(action: 'detail', arguments: '{objectId:  object.id}')}"
+                   class="pull-right text-muted text-lead object-detail-trigger">
+                    <i class="t3icon fa fa-chevron-right icon icon-chevron-right glyphicon glyphicon-chevron-right"></i>
+                </a>
+
+                <a href="#vh{object.id -> dash:format.htmlId()}" data-href="{f:uri.action(action: 'detail', arguments: '{objectId:  object.id}')}"
+                   class="object-detail-trigger">
                     {object.name}
-                </f:link.action>
+                </a>
             </f:else>
         </f:if>
     </h4>
@@ -25,4 +29,5 @@
             <f:render partial="Asset/Meters" arguments="{_all}" />
         </div>
     </div>
+    <div class="value-history" id="vh{object.id -> dash:format.htmlId()}"></div>
 </div>

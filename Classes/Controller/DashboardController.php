@@ -44,12 +44,20 @@ class DashboardController extends ActionController {
 
 	/**
 	 * @param string $objectId The ID of a CMIS object to be displayed
-	 * @return void
+	 * @return string
 	 */
 	public function detailAction($objectId) {
-		$this->view->assign('object', array(
-			'objectId' => $objectId
-		));
-	}
+		$this->view->assign(
+			'object',
+			array(
+				'objectId' => $objectId
+			)
+		);
 
+		$jsonView = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Mvc\\View\\JsonView');
+		$jsonView->setControllerContext($this->controllerContext);
+		$jsonView->assign('value', array('content' => $this->view->render()));
+
+		return $jsonView->render();
+	}
 }

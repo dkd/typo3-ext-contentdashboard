@@ -1,5 +1,5 @@
 {
-  "exclude": "(^Resources/Public/Themes/Bootstrap/)i",
+  "exclude": "(^Resources/Public/Themes/Bootstrap/|^Resources/Public/Fonts/)i",
   "linters": {
     "JavaScript Linter": {
       "type": "jshint",
