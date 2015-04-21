@@ -18,8 +18,20 @@ class StylesheetsViewHelper extends AbstractResourcesViewHelper {
 		$path = $this->getPublicResourcePath();
 		$stylesheets = array();
 		if (TRUE === $this->isCoreVersionBelowSeven()) {
+			$doc = $this->getDocInstance();
+			$pageRenderer = $doc->getPageRenderer();
+			$pageRenderer->addCssFile(
+				$path . 'Themes/Bootstrap/css/bootstrap.min.css',
+				'stylesheet',
+				'all',
+				'',
+				TRUE,
+				TRUE,
+				'',
+				TRUE
+			);
+
 			$stylesheets[] = $path . 'Vendor/Fonts/FontAwesome/css/font-awesome.min.css';
-			$stylesheets[] = $path . 'Themes/Bootstrap/css/bootstrap.min.css';
 			$stylesheets[] = $path . 'Stylesheets/TYPO3-6-2-compatibility.css';
 		}
 

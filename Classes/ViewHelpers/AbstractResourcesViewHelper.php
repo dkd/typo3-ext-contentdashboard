@@ -8,7 +8,7 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 /**
  * Class StylesheetsViewHelper
  */
-abstract class AbstractResourcesViewHelper extends AbstractViewHelper {
+abstract class AbstractResourcesViewHelper extends AbstractBackendViewHelper {
 
 	/**
 	 * Returns an array (for feeding into f:be.container) of files that should be loaded.
