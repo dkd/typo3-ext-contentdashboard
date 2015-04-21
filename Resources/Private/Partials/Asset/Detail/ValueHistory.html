@@ -1,15 +1,19 @@
+{namespace dash=Dkd\Contentdashboard\ViewHelpers}
 <h4>Value History</h4>
 <div role="tabpanel">
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active">
-            <a href="#preservation-value" aria-controls="home" role="tab" data-toggle="tab">Preservation value</a>
+            <a href="#preservation-value-{object.objectId -> dash:format.htmlId()}"
+               aria-controls="home" role="tab" data-toggle="tab">Preservation value</a>
         </li>
         <li role="presentation">
-            <a href="#memory-buoyancy" aria-controls="profile" role="tab" data-toggle="tab">Memory buoyancy</a>
+            <a href="#memory-buoyancy-{object.objectId -> dash:format.htmlId()}"
+               aria-controls="profile" role="tab" data-toggle="tab">Memory buoyancy</a>
         </li>
     </ul>
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active preservation-value">
+        <div role="tabpanel" class="tab-pane active preservation-value"
+             id="preservation-value-{object.objectId -> dash:format.htmlId()}">
             <div class="container">
                 <p>April 2015 <span class="glyphicon glyphicon-calendar"></span></p>
                 <div class="preservation-value-graph">
@@ -24,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <div role="tabpanel" class="tab-pane memory-buoyancy">
+        <div role="tabpanel" class="tab-pane memory-buoyancy" id="memory-buoyancy-{object.objectId -> dash:format.htmlId()}">
             <div class="container">
                 <p>April 2015 <span class="glyphicon glyphicon-calendar"></span></p>
                 <div class="memory-buoyancy-graph">

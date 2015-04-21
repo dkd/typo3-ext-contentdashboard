@@ -60,3 +60,7 @@ ul.meter li.empty {
     -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
 }
+
+.value-history .tab-pane {
+    padding-top: 1em;
+}

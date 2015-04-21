@@ -11,7 +11,8 @@ if (TYPO3_MODE === 'BE') {
 		'after:file',
 		array(
 			'Dashboard' => 'index,detail',
-			'Archive' => 'index'
+			'Archive' => 'index',
+			'DashboardAjax' => 'lifeCycleData'
 		),
 		array(
 			'access' => 'user,group',

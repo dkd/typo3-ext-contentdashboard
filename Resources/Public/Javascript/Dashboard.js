@@ -17,6 +17,12 @@
                         contentContainer.html(data.content);
                         $this.addClass('opened');
                         contentContainer.slideDown();
+
+                        var lifeCycleGraph = $(contentContainer).find('.life-cycle-graph');
+                        if(lifeCycleGraph.length == 1) {
+                            var lifeCycleId = lifeCycleGraph.attr('id');
+                            loadchart(lifeCycleGraph.attr('id'), lifeCycleGraph.data('url'));
+                        }
                     });
                 }
             }

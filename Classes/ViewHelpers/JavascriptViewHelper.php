@@ -20,6 +20,9 @@ class JavascriptViewHelper extends AbstractResourcesViewHelper {
 		if (TRUE === $this->isCoreVersionBelowSeven()) {
 			$stylesheets[] = $path . 'Themes/Bootstrap/js/bootstrap.min.js';
 		}
+
+		$stylesheets[] = $path . 'Vendor/Javascript/d3.js';
+		$stylesheets[] = $path . 'Vendor/Javascript/d3dateline.js';
 		$stylesheets[] = $path . 'Javascript/Dashboard.js';
 
 		return $stylesheets;

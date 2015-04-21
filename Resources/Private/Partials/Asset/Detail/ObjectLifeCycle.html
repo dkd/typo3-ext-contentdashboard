@@ -1,6 +1,7 @@
+{namespace dash=Dkd\Contentdashboard\ViewHelpers}
 <h4>Object life cycle</h4>
-<div class="object-life-cycle-graph">
-    <p>Object life cycle graph</p>
+<div class="life-cycle-graph" id="olg{object.objectId -> dash:format.htmlId()}"
+     data-url="{f:uri.action(action: 'lifeCycleData', controller: 'DashboardAjax', arguments: '{objectId: object.objectId}')}">
 </div>
 
 <span class="fa-stack">
