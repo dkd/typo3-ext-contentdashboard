@@ -21,10 +21,42 @@
         </f:if>
     </h4>
     <div class="row">
-        <div class="col-xs-6">
-            <img src="" class="dummy-image" />
+        <div class="col-xs-2">
+            <div class="contentdashboard-item-image-container">
+                <f:if condition="{object.baseType.id} == 'cmis:folder'">
+                    <f:then>
+                        <f:link.action action="index" arguments="{folder: object.id}">
+                            <img src="{f:uri.resource(path:'Icons/Folder.svg')}" class="contentdashboard-item-image" />
+                        </f:link.action>
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{dash:cmis.rendition.thumbnailUri(cmisObject: '{object}')}">
+                            <f:then>
+                                <div class="contentdashboard-item-action-buttons">
+                                    <f:link.action action="detail" arguments="{objectId: object.id}" class="contentdashboard-item-action-buttons--link">Add to Archive</f:link.action>
+                                    <f:link.action action="delete" arguments="{cmisObjectId: object.id}" class="contentdashboard-item-action-buttons--link m-bg-gray">Delete</f:link.action>
+                                </div>
+
+                                <img src="{dash:cmis.rendition.thumbnailUri(cmisObject: '{object}')}" class="contentdashboard-item-image" />
+                            </f:then>
+                            <f:else>
+                                <img src="{f:uri.resource(path:'Icons/File.svg')}" class="contentdashboard-item-image" />
+                            </f:else>
+                        </f:if>
+                    </f:else>
+                </f:if>
+            </div>
         </div>
-        <div class="col-xs-6 asset-brief-meters">
+        <div class="col-xs-5">
+            <h4><f:translate key="dashboard.assets.metaData" /></h4>
+            <f:if condition="{dash:cmis.object.propertyValue(cmisObject: object, property: 'exif:dateTimeOriginal')}">
+                <f:then>Creation date (exif): <f:format.date format="d.m.Y - H:i:s"><dash:cmis.object.propertyValue cmisObject="{object}" property="exif:dateTimeOriginal" /></f:format.date></f:then>
+                <f:else>Creation date: <f:format.date format="d.m.Y - H:i:s"><dash:cmis.object.propertyValue cmisObject="{object}" property="cmis:creationDate" /></f:format.date></f:else>
+            </f:if>
+            <br />
+            Created By: <dash:cmis.object.propertyValue cmisObject="{object}" property="cmis:createdBy" /><br />
+        </div>
+        <div class="col-xs-5 asset-brief-meters">
             <h4><f:translate key="dashboard.assets.values" /></h4>
             <f:render partial="Asset/Meters" arguments="{_all}" />
         </div>

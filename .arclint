@@ -22,7 +22,7 @@
     },
     "Basic text linter for line length, encoding, trailing whitespace ...": {
       "type": "text",
-      "exclude": "(^composer.lock$|.php$)"
+      "exclude": "(^composer.lock$|.php|.html|.css|.svg$)"
     }
   }
 }

@@ -1,0 +1,22 @@
+{namespace dash=Dkd\Contentdashboard\ViewHelpers}
+<div class="container asset asset-brief">
+    <h3>{object.pofId}</h3>
+    <div class="row">
+        <div class="col-xs-1">
+            <h4>Actions</h4>
+            [RESTORE]
+        </div>
+        <div class="col-xs-7">
+            <h4><f:translate key="dashboard.assets.metaData" /></h4>
+            <f:for each="{object}" as="value" key="key">
+                {key}: <code>{value}</code><br />
+            </f:for>
+            <br />
+        </div>
+        <div class="col-xs-4 asset-brief-meters">
+            <h4><f:translate key="dashboard.assets.values" /></h4>
+            <f:render partial="Asset/Meters" arguments="{_all}" />
+        </div>
+    </div>
+    <div class="value-history" id="vh{object.id -> dash:format.htmlId()}"></div>
+</div>

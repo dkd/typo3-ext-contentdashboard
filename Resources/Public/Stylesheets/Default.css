@@ -7,15 +7,51 @@
     margin-top: 0;
 }
 
-.dummy-image {
-    width: 130px;
-    height: 80px;
+.contentdashboard-item-image-container {
+    position: relative;
+    max-width: 130px;
+}
+
+.contentdashboard-item-image {
+    width: 100%;
     border: 1px solid #333333;
-    background-color: #CCCCCC;
+}
+
+.contentdashboard-item-action-buttons {
+    position: absolute;
+    width: 100%;
+    padding-top: 10px;
+    display: none;
+}
+
+.contentdashboard-item-image-container:hover .contentdashboard-item-action-buttons {
+    display: inline;
+}
+
+.contentdashboard-item-action-buttons--link, .contentdashboard-item-action-buttons--link:hover,
+.contentdashboard-item-action-buttons--link:active {
+    color: white;
+    display: block;
+    width: 90%;
+    height: 30px;
+    line-height: 20px;
+    margin: 10px auto;
+    padding: 5px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: teal;
+    border: 1px solid #333;
+}
+
+.contentdashboard-item-action-buttons--link.m-bg-gray {
+    background-color: #ECECEC;
+    color: #333;
 }
 
 .asset-brief {
     padding-bottom: 2em;
+    border-bottom: 1px solid #CCCCCC;
 }
 
 .asset-brief:hover {

@@ -25,6 +25,9 @@
             <trans-unit id="dashboard.assets.values" xml:space="preserve">
                 <source>Current values</source>
             </trans-unit>
+            <trans-unit id="dashboard.assets.metaData" xml:space="preserve">
+                <source>Meta Data</source>
+            </trans-unit>
             <trans-unit id="dashboard.assets.values.preservation" xml:space="preserve">
                 <source>Preservation value</source>
             </trans-unit>

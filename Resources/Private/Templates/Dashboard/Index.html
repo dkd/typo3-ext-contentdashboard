@@ -7,7 +7,7 @@
 <f:section name="Main">
     <h2><f:translate key="dashboard.assets.title" /></h2>
     <hr />
-    <h3>Folder: {folder.name}</h3>
+    <h3>Folder: <f:link.action action="index" arguments="{folder: folder.id}">{folder.name}</f:link.action></h3>
     <f:alias map="{parentFolder: folder.folderParent}">
         <f:if condition="{parentFolder}">
             <h4>Parent folder: <f:link.action action="index" arguments="{folder: parentFolder.id}">{parentFolder.name}</f:link.action></h4>

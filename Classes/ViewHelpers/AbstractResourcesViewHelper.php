@@ -32,5 +32,4 @@ abstract class AbstractResourcesViewHelper extends AbstractBackendViewHelper {
 	protected function getPublicResourcePath() {
 		return '../' . ExtensionManagementUtility::siteRelPath('contentdashboard') . 'Resources/Public/';
 	}
-
 }
