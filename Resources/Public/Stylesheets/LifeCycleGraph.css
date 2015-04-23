@@ -1,24 +1,27 @@
-.life-cycle-graph .chart {
-    font-family: Arial, sans-serif;
+.life-cycle-graph {
+    border: 1px solid #eaeaea;
+    float: left;
+    font-family: Arial,sans-serif;
     font-size: 10px;
-    border: 1px solid black;
-    float:left;
-    width:600px;
-    height:210px;
-    overflow:auto;
+    height: 210px;
+    margin-bottom: 10px;
+    max-width: 100%;
+    overflow: auto;
+    padding: 0 10px;
     white-space: nowrap;
+    width: 100%;
 }
-.life-cycle-graph .axis path, .axis line {
+.life-cycle-graph .axis path, .axis line, .sline {
     fill: none;
-    stroke: #000;
+    stroke: #cccccc;
     shape-rendering: crispEdges;
 }
 .life-cycle-graph .letter {
     fill: #ffffd0;
-    stroke-width: 1
+    stroke-width: 0.5
 }
 .life-cycle-graph .precise {
-    stroke: #000000;
+    stroke: #333333;
 }
 .life-cycle-graph .notprecise {
     stroke: #ff2c00;
@@ -49,4 +52,20 @@
     stroke: #fff;
     stroke-width: 3px;
     stroke-opacity: .8;
+}
+.life-cycle-graph .tooltip {
+    pointer-events:none;
+    opacity:0;
+    transition: opacity 0.5s;
+}
+.life-cycle-graph .tooltip.open {
+    opacity:1;
+}
+
+.life-cycle-graph .tooltip .tooltipbg {
+    background: #ffffff;
+    position: absolute;
+    fill: #fff;
+    stroke: #666666;
+    stroke-width: 0.5;
 }

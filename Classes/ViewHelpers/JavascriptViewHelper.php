@@ -22,7 +22,8 @@ class JavascriptViewHelper extends AbstractResourcesViewHelper {
 		}
 
 		$stylesheets[] = $path . 'Vendor/Javascript/d3.js';
-		$stylesheets[] = $path . 'Vendor/Javascript/d3dateline.js';
+		$stylesheets[] = $path . 'Javascript/d3datelineCallbacks.js';
+		$stylesheets[] = $path . 'Javascript/d3dateline.js';
 		$stylesheets[] = $path . 'Javascript/Dashboard.js';
 
 		return $stylesheets;
