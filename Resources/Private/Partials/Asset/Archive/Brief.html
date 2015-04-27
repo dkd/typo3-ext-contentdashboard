@@ -1,14 +1,25 @@
 {namespace dash=Dkd\Contentdashboard\ViewHelpers}
 <div class="container asset asset-brief">
-    <h3>{object.pofId}</h3>
+    <h3>{object.metadata.metadata.dc-title-alternative}</h3>
     <div class="row">
-        <div class="col-xs-1">
+        <div class="col-xs-2">
             <h4>Actions</h4>
-            [RESTORE]
+            <f:if condition="{object.restoreTask}">
+                <f:then>
+                    Restoring has been triggered.<br />
+                    Task ID: <code>{object.restoreTask.taskId}</code><br />
+                    Task Status: <code>{object.restoreTask.taskStatus}</code>
+                </f:then>
+                <f:else>
+                    <f:link.action action="restore" arguments="{cmisId: object.identifiers.cmisId}">
+                        <img src="{f:uri.resource(path:'Icons/Restore.svg')}" class="contentdashboard-item-image" />
+                    </f:link.action>
+                </f:else>
+            </f:if>
         </div>
-        <div class="col-xs-7">
+        <div class="col-xs-6">
             <h4><f:translate key="dashboard.assets.metaData" /></h4>
-            <f:for each="{object}" as="value" key="key">
+            <f:for each="{object.metadata.metadata}" as="value" key="key">
                 {key}: <code>{value}</code><br />
             </f:for>
             <br />

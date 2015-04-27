@@ -1,33 +1,17 @@
 <?php
 namespace Dkd\Contentdashboard\Controller;
 
-use Dkd\CmisService\Factory\CmisObjectFactory;
 use Dkd\PhpCmis\Data\DocumentInterface;
-use Dkd\PhpCmis\SessionInterface;
+use GuzzleHttp\Exception\RequestException;
 use Maroschik\Identity\IdentityMap;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use GuzzleHttp\Client;
 
 /**
  * Class DashboardController
  */
-class DashboardController extends ActionController
+class DashboardController extends AbstractController
 {
-	const MIDDLEWARE_URL = 'http://pofmiddleware:8080/server/rest-api/';
-
-	/**
-	 * @var CmisObjectFactory
-	 */
-	protected $cmisObjectFactory;
-
-	/**
-	 * @return void
-	 */
-	public function initializeAction() {
-		$this->cmisObjectFactory = new CmisObjectFactory();
-	}
-
 	/**
 	 * @param string $folder The ID of a CMIS folder to be browsed
 	 * @return void
@@ -102,10 +86,26 @@ class DashboardController extends ActionController
 	}
 
 	/**
-	 * @return SessionInterface
+	 * @param string $cmisObjectId
+	 * @param string $folderId
 	 */
-	protected function getCmisSession() {
-		return $this->cmisObjectFactory->getSession();
+	public function preserveAction($cmisObjectId, $folder = NULL) {
+		// TODO Move this to the forgetit extension
+		$client = new Client();
+		try {
+			$response = $client->post(self::MIDDLEWARE_URL . 'resource', array(
+				'body' => array(
+					'cmisServerId' => self::CMIS_SERVER_ID,
+					'cmisId' => $cmisObjectId,
+					// TODO calculate preservation value
+					'PV' => 1
+				)
+			))->json();
+			$this->addFlashMessage('Task to preserve resource has been triggered with id ' . $response['taskId']);
+		} catch (RequestException $e) {
+			$this->addFlashMessage('Error while preserving the resource. Details: ' . $e->getMessage(), '', AbstractMessage::ERROR);
+		}
+		$this->forward('index', NULL, NULL, array('folder' => $folder));
 	}
 
 	/**
@@ -119,35 +119,4 @@ class DashboardController extends ActionController
 		$tce->start(array(), $cmd);
 		$tce->process_cmdmap();
 	}
-
-//	/**
-//	 * @param DocumentInterface $cmisDocument
-//	 */
-//	protected function registerResourceInPof(DocumentInterface $cmisDocument)
-//	{
-//		$client = new \GuzzleHttp\Client();
-//
-//		$response = $client->post(
-//			self::MIDDLEWARE_URL . 'test/upload/resource',
-//			array('body' => array(
-//			  'file' => $cmisDocument->getContentStream()
-//			))
-//		);
-//
-//		$id = NULL;
-//		$url = NULL;
-//		foreach ($response->json()['entries']['entry'] as $entry) {
-//			if ($entry['key'] === 'id') {
-//				$id = $entry['value'];
-//			}
-//			if ($entry['key'] === 'URL') {
-//				$url = $entry['value'];
-//			}
-//		}
-//
-//		$this->addFlashMessage(
-//		  'File has been preserved in POF under "' . $url
-//			. '" with ID "' . $id . '"'
-//		);
-//	}
 }

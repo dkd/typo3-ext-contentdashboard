@@ -1,3 +1,7 @@
+.typo3-messages {
+    margin-bottom: 20px;
+}
+
 .contentdashboard-container {
     padding: 0;
     margin: 0;
@@ -15,6 +19,7 @@
 .contentdashboard-item-image {
     width: 100%;
     border: 1px solid #333333;
+    background-color: #FFF;
 }
 
 .contentdashboard-item-action-buttons {
@@ -47,6 +52,11 @@
 .contentdashboard-item-action-buttons--link.m-bg-gray {
     background-color: #ECECEC;
     color: #333;
+}
+
+.contentdashboard-item-attribute-cmisid {
+    width: 100%;
+    max-width: 285px;
 }
 
 .asset-brief {

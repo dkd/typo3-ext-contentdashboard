@@ -5,7 +5,7 @@
 </f:section>
 
 <f:section name="Main">
-    <h1>Archive</h1>
+    <h1><f:link.action action="index">Archive</f:link.action></h1>
     <div id="dashboard-asset-list">
         {f:render(partial: 'Asset/Archive/Brief', arguments: '{_all}') -> f:for(each: objects, as: 'object', iteration: 'iteration')}
     </div>

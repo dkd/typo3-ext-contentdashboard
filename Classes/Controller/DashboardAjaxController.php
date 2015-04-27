@@ -6,7 +6,7 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 /**
  * Class DashboardAjaxController
  */
-class DashboardAjaxController extends ActionController {
+class DashboardAjaxController extends AbstractController {
 
 	/**
 	 * @var string
