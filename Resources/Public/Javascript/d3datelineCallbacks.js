@@ -9,6 +9,10 @@ function itemclick( d ) {
 }
 
 function itemmouseover( d ) {
+    // reorder nodes for tooltip position
+    d3.selectAll(".node").sort(function (a, b) {
+        return a.id != d.id ? -1 : 1;
+    });
     d3.select('#tooltip' + d.id).classed('open', true);
 }
 

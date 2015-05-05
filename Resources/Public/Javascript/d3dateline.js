@@ -133,12 +133,11 @@ function loadchart(div, json) {
 		// add fixed coords to nodes
 		var stackcounts = [];
 
-
 		// [PATCH begin]
-		// Datum (2015-04-23) Dimitri Ebert <dimitri.ebert@dkd.de>
-		// reverses nodes for the render order
+		// Datum (2015-04-27) Dimitri Ebert <dimitri.ebert@dkd.de>
+		// added y-offset for marker line
 
-		graph.nodes.reverse();
+		var stackoffset = [];
 
 		// [PATCH end]
 
@@ -149,6 +148,15 @@ function loadchart(div, json) {
 			node.x = x(new Date(node.date)) + (2 * radius);
 			if (node.type == "fixed") {
 				var previousLetters = (stackcounts['d' + node.date]) ? stackcounts['d' + node.date] : 0;
+
+				// [PATCH begin]
+				// Datum (2015-04-24) Dimitri Ebert <dimitri.ebert@dkd.de>
+				// added y-offset for marker line
+
+				node.lineFlag = previousLetters ? false : true;
+
+				// [PATCH end]
+
 				stackcounts['d' + node.date] = previousLetters + 1;
 				node.y = height - margin.bottom - margin.top - radius - 1 -
 				(previousLetters * radius * 2) - previousLetters;
@@ -162,8 +170,13 @@ function loadchart(div, json) {
 			// Datum (2015-04-23) Dimitri Ebert <dimitri.ebert@dkd.de>
 			// added y-offset for marker line
 
-			var offsety = node.label == 'V' ? 40: 70;
-			node.y = node.y - offsety;
+			if(node.lineFlag){
+				var offsety = node.label == 'V' ? 40: 70;
+				node.y = node.y - offsety;
+				stackoffset['d' + node.date] = offsety;
+			} else {
+				node.y = node.y - stackoffset['d' + node.date];
+			}
 
 			// [PATCH end]
 
@@ -193,7 +206,7 @@ function loadchart(div, json) {
 				.attr('x2', 1)
 				.attr('y1', 10)
 				.attr('y2', function ( d ) {
-						  return 160 - d.y
+						  return d.lineFlag ? 160 - d.y : 10;
 					  });
 		// [PATCH end]
 
@@ -209,7 +222,7 @@ function loadchart(div, json) {
 
 		tooltip.append("svg:polyline")
 				.attr('class', 'tooltipbg')
-				.attr('points','-20,-70,180,-70,180,-20,10,-20,0,-12,-10,-20,-20,-20,-20,-20,-20,-70');
+				.attr('points', '-20,-70,180,-70,180,-20,10,-20,0,-12,-10,-20,-20,-20,-20,-20,-20,-70');
 
 		tooltip.append('foreignObject')
 				.attr("y", -65)
