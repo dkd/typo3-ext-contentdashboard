@@ -135,10 +135,11 @@ class ArchiveController extends AbstractController
 						$typo3Cmis->createObjectId($typo3Cmis->getRepositoryInfo()->getRootFolderId()),
 						\GuzzleHttp\Stream\Stream::factory(fopen($content, 'r'))
 					);
-
+					$this->signalSlotDispatcher->dispatch(__CLASS__, 'afterRestoreAction', array($newCmisId));
 					$this->addFlashMessage(
 						'Object has been restored in CMIS with id ' . $newCmisId->getId()
 					);
+
 					// remove task
 					$registry->remove(self::REGISTRY_KEY_RESTORE_TASK, $cmisId);
 				}

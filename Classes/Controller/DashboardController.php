@@ -80,6 +80,10 @@ class DashboardController extends AbstractController
 			$folderObjectId = $cmisObject->getParents()[0]->getId();
 //			$this->registerResourceInPof($cmisObject);
 			$cmisObject->delete(TRUE);
+			$this->signalSlotDispatcher->dispatch(__CLASS__, 'afterDeleteAction', array(
+				$typo3Identifier,
+				$cmisObject->getId()
+			));
 		}
 		$this->addFlashMessage('Deleted CMIS object "' . $cmisObject->getPropertyValue('cmis:name') . '"');
 		$this->forward('index', NULL, NULL, array('folder' => $folderObjectId));
@@ -101,6 +105,7 @@ class DashboardController extends AbstractController
 					'PV' => 1
 				)
 			))->json();
+			$this->signalSlotDispatcher->dispatch(__CLASS__, 'afterPreserveAction', array($cmisObjectId, $response));
 			$this->addFlashMessage('Task to preserve resource has been triggered with id ' . $response['taskId']);
 		} catch (RequestException $e) {
 			$this->addFlashMessage('Error while preserving the resource. Details: ' . $e->getMessage(), '', AbstractMessage::ERROR);
