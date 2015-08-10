@@ -49,12 +49,23 @@
         <div class="col-xs-5">
             <h4><f:translate key="dashboard.assets.metaData" /></h4>
             <f:if condition="{dash:cmis.object.propertyValue(cmisObject: object, property: 'exif:dateTimeOriginal')}">
-                <f:then>Creation date (exif): <f:format.date format="d.m.Y - H:i:s"><dash:cmis.object.propertyValue cmisObject="{object}" property="exif:dateTimeOriginal" /></f:format.date></f:then>
-                <f:else>Creation date: <f:format.date format="d.m.Y - H:i:s"><dash:cmis.object.propertyValue cmisObject="{object}" property="cmis:creationDate" /></f:format.date></f:else>
+                <f:then>
+                    <span>
+                        Creation date (exif): <f:format.date format="d.m.Y - H:i:s"><dash:cmis.object.propertyValue cmisObject="{object}" property="exif:dateTimeOriginal" /></f:format.date>
+                    </span>
+                </f:then>
+                <f:else>
+                    <div class="labels">
+                        Creation date: <f:format.date format="d.m.Y - H:i:s"><dash:cmis.object.propertyValue cmisObject="{object}" property="cmis:creationDate" /></f:format.date>
+                    </div>        
+                </f:else>
             </f:if>
-            <br />
-            Created By: <dash:cmis.object.propertyValue cmisObject="{object}" property="cmis:createdBy" /><br />
-            CMIS Id: <input value="{dash:cmis.object.propertyValue(cmisObject: '{object}', property: 'cmis:objectId')}" onclick="this.select()" class="contentdashboard-item-attribute-cmisid" /><br />
+            <div class="labels">
+                Created By: <dash:cmis.object.propertyValue cmisObject="{object}" property="cmis:createdBy" />
+            </div>
+            <div class="labels">
+                CMIS Id: <input value="{dash:cmis.object.propertyValue(cmisObject: '{object}', property: 'cmis:objectId')}" onclick="this.select()" class="contentdashboard-item-attribute-cmisid" /><br />
+            </div>
         </div>
         <div class="col-xs-5 asset-brief-meters">
             <h4><f:translate key="dashboard.assets.values" /></h4>

@@ -1,13 +1,16 @@
 {namespace dash=Dkd\Contentdashboard\ViewHelpers}
+<div class="sectionDetail">
+
 <h4>Object life cycle</h4>
 <div class="life-cycle-graph" id="olg{object.objectId -> dash:format.htmlId()}"
      data-url="{f:uri.action(action: 'lifeCycleData', controller: 'DashboardAjax', arguments: '{objectId: object.objectId}')}">
 </div>
 
 <span class="fa-stack">
-  <i class="fa fa-circle-thin fa-stack-2x"></i>
+  <i class="fa fa fa-circle-thin fa-stack-2x"></i>
   <i class="fa fa-stack-1x">V</i>
 </span>
+
 New version &nbsp;
 
 <span class="fa-stack">
@@ -17,8 +20,10 @@ New version &nbsp;
 Archived &nbsp;
 
 <span class="fa-stack">
-  <i class="fa fa-circle-thin fa-stack-2x"></i>
+  <i class="fa fa fa-circle-thin fa-stack-2x"></i>
   <i class="fa fa-stack-1x">R</i>
 </span>
 Restored from archive &nbsp;
-<hr>
+</div>
+
+

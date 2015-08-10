@@ -1,48 +1,50 @@
 {namespace dash=Dkd\Contentdashboard\ViewHelpers}
-<h4>Value History</h4>
-<div role="tabpanel">
-    <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active">
-            <a href="#preservation-value-{object.objectId -> dash:format.htmlId()}"
-               aria-controls="home" role="tab" data-toggle="tab">Preservation value</a>
-        </li>
-        <li role="presentation">
-            <a href="#memory-buoyancy-{object.objectId -> dash:format.htmlId()}"
-               aria-controls="profile" role="tab" data-toggle="tab">Memory buoyancy</a>
-        </li>
-    </ul>
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active preservation-value"
-             id="preservation-value-{object.objectId -> dash:format.htmlId()}">
-            <div class="container">
-                <p>April 2015 <span class="glyphicon glyphicon-calendar"></span></p>
-                <div class="preservation-value-graph">
-                    <p>Preservation value graph</p>
+
+<div class="sectionDetail">
+        <h4>Value History</h4>
+        <div role="tabpanel">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#preservation-value-{object.objectId -> dash:format.htmlId()}"
+                       aria-controls="home" role="tab" data-toggle="tab">Preservation value</a>
+                </li>
+                <li role="presentation">
+                    <a href="#memory-buoyancy-{object.objectId -> dash:format.htmlId()}"
+                       aria-controls="profile" role="tab" data-toggle="tab">Memory buoyancy</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active preservation-value"
+                     id="preservation-value-{object.objectId -> dash:format.htmlId()}">
+                    <div class="container">
+                        <p>April 2015 <span class="glyphicon glyphicon-calendar"></span></p>
+                        <div class="preservation-value-graph">
+                            <p>Preservation value graph</p>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn button-tabs" data-query-range="1d">24 hours</button>
+                            <button type="button" class="btn button-tabs" data-query-range="7d">7 days</button>
+                            <button type="button" class="btn button-tabs" data-query-range="1m">1 month</button>
+                            <button type="button" class="btn button-tabs" data-query-range="1y">1 year</button>
+                            <button type="button" class="btn button-tabs" data-query-range="0">Beginning</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default" data-query-range="1d">24 hours</button>
-                    <button type="button" class="btn btn-default" data-query-range="7d">7 days</button>
-                    <button type="button" class="btn btn-default" data-query-range="1m">1 month</button>
-                    <button type="button" class="btn btn-default" data-query-range="1y">1 year</button>
-                    <button type="button" class="btn btn-default" data-query-range="0">Beginning</button>
+                <div role="tabpanel" class="tab-pane memory-buoyancy" id="memory-buoyancy-{object.objectId -> dash:format.htmlId()}">
+                    <div class="container">
+                        <p>April 2015 <span class="glyphicon glyphicon-calendar"></span></p>
+                        <div class="memory-buoyancy-graph">
+                            <p>Memory buoyancy graph</p>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn button-tabs" data-query-range="1d">24 hours</button>
+                            <button type="button" class="btn button-tabs" data-query-range="7d">7 days</button>
+                            <button type="button" class="btn button-tabs" data-query-range="1m">1 month</button>
+                            <button type="button" class="btn button-tabs" data-query-range="1y">1 year</button>
+                            <button type="button" class="btn button-tabs" data-query-range="0">Beginning</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div role="tabpanel" class="tab-pane memory-buoyancy" id="memory-buoyancy-{object.objectId -> dash:format.htmlId()}">
-            <div class="container">
-                <p>April 2015 <span class="glyphicon glyphicon-calendar"></span></p>
-                <div class="memory-buoyancy-graph">
-                    <p>Memory buoyancy graph</p>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default" data-query-range="1d">24 hours</button>
-                    <button type="button" class="btn btn-default" data-query-range="7d">7 days</button>
-                    <button type="button" class="btn btn-default" data-query-range="1m">1 month</button>
-                    <button type="button" class="btn btn-default" data-query-range="1y">1 year</button>
-                    <button type="button" class="btn btn-default" data-query-range="0">Beginning</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
-<hr>

@@ -18,15 +18,20 @@
 
 .contentdashboard-item-image {
     width: 100%;
-    border: 1px solid #333333;
+    border: 1px solid #dddddd;
     background-color: #FFF;
 }
+
+/*.contentdashboard-item-image:hover {
+    background-color: #666666;
+}*/
 
 .contentdashboard-item-action-buttons {
     position: absolute;
     width: 100%;
-    padding-top: 10px;
     display: none;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .contentdashboard-item-image-container:hover .contentdashboard-item-action-buttons {
@@ -45,22 +50,25 @@
     font-weight: bold;
     text-align: center;
     text-decoration: none;
-    background-color: teal;
-    border: 1px solid #333;
+    background-color: #FF8702;
+    border-radius: 4px;
 }
 
 .contentdashboard-item-action-buttons--link.m-bg-gray {
     background-color: #ECECEC;
     color: #333;
+    border-radius: 4px;
 }
 
 .contentdashboard-item-attribute-cmisid {
     width: 100%;
     max-width: 285px;
+    border: 1px solid #b9b9b9;
+    border-radius: 0px;
 }
 
 .asset-brief {
-    padding-bottom: 2em;
+    /*padding-bottom: 15px;*/
     border-bottom: 1px solid #CCCCCC;
 }
 
@@ -68,9 +76,15 @@
     background-color: #ECECEC;
 }
 
+
+.asset-brief:focus {
+    background-color: #E7EBEE;
+}
+
 .asset-brief-meters {
-    border-left: 1px solid #666666;
+    border-left: 1px solid #cccccc;
     padding-bottom: 0.8em;
+    height: 130px;
 }
 
 .meter-container {
@@ -80,26 +94,26 @@
 ul.meter {
     list-style-type: none;
     padding-left: 0px;
-    margin: 5px 5px 0px 0px;
+    margin: 2px 5px 0px 0px;
     display: inline-block;
 }
 
 ul.meter li {
     display: block;
     float: left;
-    width: 0.8em;
-    height: 0.8em;
+    width: 0.6em;
+    height: 1.2em;
     border: 1px solid #000000;
     margin-right: 3px;
 }
 
 ul.meter li.filled {
-    border-color: #999999;
-    background-color: #999999;
+    border-color: #666666;
+    background-color: #666666;
 }
 
 ul.meter li.empty {
-    border-color: #DDDDDD;
+    border-color: #b5b5b5;
 }
 
 .object-detail-trigger.opened i {
@@ -110,3 +124,60 @@ ul.meter li.empty {
 .value-history .tab-pane {
     padding-top: 1em;
 }
+
+
+h3, h4 {
+    font-family: "Share", "verdana", sans-serif;
+}
+
+.labels {
+    margin-bottom: 10px;
+}
+
+.row {
+    margin-bottom: 10px;
+}
+
+hr, div.hr {
+    border-top: 1px solid #dddddd;
+}
+
+
+/*Styling Table */
+th {
+    background-color: #eaeaea;
+}
+
+.tableRelations {
+    border-bottom: 1px solid #dddddd;
+}
+
+th {
+    border-top: none;
+}
+
+/*Styling social Media Icons */
+.fa-facebook-official {
+    color: #3C5A99;
+}
+
+
+.fa-twitter-square {
+    color: #42C0FB;
+}
+
+
+.fa-google-plus-square{
+    color: #DD4B39;
+}
+
+
+
+.sectionDetail {
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.05);
+}
+
+

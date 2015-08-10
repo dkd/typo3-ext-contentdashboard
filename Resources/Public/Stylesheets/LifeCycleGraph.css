@@ -1,5 +1,6 @@
 .life-cycle-graph {
     border: 1px solid #eaeaea;
+    background-image: #ffffff;
     float: left;
     font-family: Arial,sans-serif;
     font-size: 10px;
@@ -68,4 +69,18 @@
     fill: #fff;
     stroke: #666666;
     stroke-width: 0.5;
+}
+
+/*Edit Valeriya Krasteva*/
+
+.button-tabs {
+    background-color: #f5f5f5;
+    border: 1px solid #dddddd;
+    margin: 0px;
+}
+
+.button-tabs:active {
+    background-color: #dddddd;
+    box-shadow: none;
+    top: 0px;
 }
