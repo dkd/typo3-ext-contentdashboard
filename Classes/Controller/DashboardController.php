@@ -1,6 +1,7 @@
 <?php
 namespace Dkd\Contentdashboard\Controller;
 
+use Dkd\Aggregation\Utility\UsageReader;
 use Dkd\PhpCmis\Data\DocumentInterface;
 use GuzzleHttp\Exception\RequestException;
 use Maroschik\Identity\IdentityMap;
@@ -42,6 +43,10 @@ class DashboardController extends AbstractController
 				'objectId' => $objectId
 			)
 		);
+
+		/** @var \Dkd\Aggregation\Service\InfluxDbService */
+		$influxDbService = $this->objectManager->get('Dkd\\Aggregation\\Service\\InfluxDbService');
+		$this->view->assign('socialCounter', $influxDbService->getSocialCounters($objectId));
 
 		$jsonView = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Mvc\\View\\JsonView');
 		$jsonView->setControllerContext($this->controllerContext);
