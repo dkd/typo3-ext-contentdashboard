@@ -3,6 +3,11 @@
     <h4>
         <f:if condition="{object.baseType.id} == 'cmis:folder'">
             <f:then>
+                <a href="#vh{object.id -> dash:format.htmlId()}" data-href="{f:uri.action(action: 'detail', arguments: '{objectId:  object.id}')}"
+                   class="pull-right text-muted text-lead object-detail-trigger">
+                    <i class="t3icon fa fa-chevron-right icon icon-chevron-right glyphicon glyphicon-chevron-right"></i>
+                </a>
+
                 <f:link.action action="index" arguments="{folder: object.id}">
                     {object.name}
                 </f:link.action>
