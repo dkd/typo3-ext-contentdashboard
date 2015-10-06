@@ -6,9 +6,9 @@ if (!defined('TYPO3_MODE')) {
 if (TYPO3_MODE === 'BE') {
 	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
 		'Dkd.Contentdashboard',
-		'file',
+		'web',
 		'tx_contentdashboard_dashboard',
-		'after:file',
+		'after:template',
 		array(
 			'Dashboard' => 'index,detail,delete,preserve',
 			'Archive' => 'index,restore,deleteRestoreTask',
@@ -18,7 +18,7 @@ if (TYPO3_MODE === 'BE') {
 			'access' => 'user,group',
 			'icon' => 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/DashboardModuleIcon.png',
 			'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xlf',
-			'navigationComponentId' => FALSE,
+			'navigationComponentId' => 'typo3-pagetree',
 			'inheritNavigationComponentFromMainModule' => FALSE
 		)
 	);

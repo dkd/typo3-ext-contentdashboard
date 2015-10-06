@@ -2,11 +2,15 @@
 namespace Dkd\Contentdashboard\Controller;
 
 use Dkd\Aggregation\Utility\UsageReader;
+use Dkd\CmisService\Factory\CmisObjectFactory;
+use Dkd\CmisService\Factory\ObjectFactory;
 use Dkd\PhpCmis\Data\DocumentInterface;
+use Dkd\PhpCmis\Exception\CmisObjectNotFoundException;
 use GuzzleHttp\Exception\RequestException;
 use Maroschik\Identity\IdentityMap;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use GuzzleHttp\Client;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Class DashboardController
@@ -18,16 +22,24 @@ class DashboardController extends AbstractController
 	 * @return void
 	 */
 	public function indexAction($folder = NULL) {
-		$cmisSession = $this->getCmisSession();
+		// Note: the page UID here is the only trustworthy way of reading this particular
+		// argument. It is not possible to get this as part of the Extbase MVC Request.
+		// Note also that in templates, the parameter is also handled in a separate manner.
+		$pageUid = (integer) GeneralUtility::_GP('id');
+		try {
+			$cmisSession = $this->getCmisSession();
+			$startingFolder = ObjectFactory::getInstance()->getCmisService()->getUuidForLocalRecord('pages', $pageUid);
+		} catch (CmisObjectNotFoundException $error) {
+			if ($folder === NULL || !$startingFolder) {
+				$startingFolder = $cmisSession->getRootFolder()->getId();
+			} else {
+				$startingFolder = $folder;
+			}
+		}
 
 		// currently we use the cmis root folder
 		// this could be a configurable setting in the future
-		if ($folder === NULL) {
-			$rootFolder = $cmisSession->getRootFolder();
-		} else {
-			// TODO check if it a folder
-			$rootFolder = $cmisSession->getObject($cmisSession->createObjectId($folder));
-		}
+		$rootFolder = $cmisSession->getObject($cmisSession->createObjectId($startingFolder));
 
 		$this->view->assign('folder', $rootFolder);
 	}
