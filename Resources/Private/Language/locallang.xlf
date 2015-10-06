@@ -16,6 +16,9 @@
             <trans-unit id="view.dashboard" xml:space="preserve">
                 <source>Dashboard</source>
             </trans-unit>
+            <trans-unit id="view.files" xml:space="preserve">
+                <source>Files dashboard</source>
+            </trans-unit>
             <trans-unit id="view.archive" xml:space="preserve">
                 <source>Archive</source>
             </trans-unit>

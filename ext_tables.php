@@ -10,7 +10,7 @@ if (TYPO3_MODE === 'BE') {
 		'tx_contentdashboard_dashboard',
 		'after:template',
 		array(
-			'Dashboard' => 'index,detail,delete,preserve',
+			'Dashboard' => 'index,detail,delete,preserve,files',
 			'Archive' => 'index,restore,deleteRestoreTask',
 			'DashboardAjax' => 'lifeCycleData'
 		),

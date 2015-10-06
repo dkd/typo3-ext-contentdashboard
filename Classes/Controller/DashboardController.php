@@ -5,11 +5,13 @@ use Dkd\Aggregation\Utility\UsageReader;
 use Dkd\CmisService\Factory\CmisObjectFactory;
 use Dkd\CmisService\Factory\ObjectFactory;
 use Dkd\PhpCmis\Data\DocumentInterface;
+use Dkd\PhpCmis\Data\FolderInterface;
 use Dkd\PhpCmis\Exception\CmisObjectNotFoundException;
 use GuzzleHttp\Exception\RequestException;
 use Maroschik\Identity\IdentityMap;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use GuzzleHttp\Client;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -18,30 +20,58 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class DashboardController extends AbstractController
 {
 	/**
+	 * @param $folderId
+	 * @param null $default
+	 * @return FolderInterface
+	 */
+	protected function getCurrentFolderObject($folderId, $default = NULL) {
+		if ($folderId === NULL) {
+			$folderId = $default;
+		}
+		try {
+			$cmisSession = $this->getCmisSession();
+			if (empty($folderId)) {
+				return $cmisSession->getRootFolder();
+			}
+			$objectId = $cmisSession->createObjectId($folderId);
+			return $cmisSession->getObject($objectId);
+		} catch (CmisObjectNotFoundException $error) {
+			if ($folderId === NULL) {
+				return $cmisSession->getRootFolder();
+			}
+		}
+		return $cmisSession->getObject($objectId);
+	}
+
+
+	/**
 	 * @param string $folder The ID of a CMIS folder to be browsed
-	 * @return void
+	 * @return string
 	 */
 	public function indexAction($folder = NULL) {
 		// Note: the page UID here is the only trustworthy way of reading this particular
 		// argument. It is not possible to get this as part of the Extbase MVC Request.
 		// Note also that in templates, the parameter is also handled in a separate manner.
 		$pageUid = (integer) GeneralUtility::_GP('id');
-		try {
-			$cmisSession = $this->getCmisSession();
-			$startingFolder = ObjectFactory::getInstance()->getCmisService()->getUuidForLocalRecord('pages', $pageUid);
-		} catch (CmisObjectNotFoundException $error) {
-			if ($folder === NULL || !$startingFolder) {
-				$startingFolder = $cmisSession->getRootFolder()->getId();
-			} else {
-				$startingFolder = $folder;
+		if ($pageUid > 0) {
+			try {
+				$default = ObjectFactory::getInstance()->getCmisService()->getUuidForLocalRecord('pages', $pageUid);
+			} catch (CmisObjectNotFoundException $error) {
+				$default = NULL;
 			}
 		}
 
-		// currently we use the cmis root folder
-		// this could be a configurable setting in the future
-		$rootFolder = $cmisSession->getObject($cmisSession->createObjectId($startingFolder));
+		$this->view->assign('folder', $this->getCurrentFolderObject($folder, $default));
+	}
 
-		$this->view->assign('folder', $rootFolder);
+	/**
+	 * @param string $folder
+	 * @return string
+	 */
+	public function filesAction($folder = NULL) {
+		$default = $this->getCmisFalStorageRecordFolderConfigurationOption();
+
+		$this->view->assign('folder', $this->getCurrentFolderObject($folder, $default));
 	}
 
 	/**
@@ -140,5 +170,18 @@ class DashboardController extends AbstractController
 		$tce->stripslashes_values = 0;
 		$tce->start(array(), $cmd);
 		$tce->process_cmdmap();
+	}
+
+	/**
+	 * @return array|NULL
+	 */
+	protected function getCmisFalStorageRecordFolderConfigurationOption() {
+		$condition = 'driver = \'cmis\' AND is_online = 1 AND hidden = 0 AND deleted = 0';
+		$record = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow('configuration', 'sys_file_storage', $condition);
+		if ($record) {
+			$configuration = GeneralUtility::xml2array($record['configuration']);
+			return $configuration['data']['sDEF']['lDEF']['folder']['vDEF'];
+		}
+		return NULL;
 	}
 }

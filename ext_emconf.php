@@ -25,6 +25,9 @@ $EM_CONF[$_EXTKEY] = array(
 			'cms' => '',
 			'extbase' => '',
 			'fluid' => '',
+			'cmis_service' => '',
+			'cmis_fal' => '',
+			'aggregation' => '',
 		),
 		'conflicts' => array(),
 		'suggests' =>
