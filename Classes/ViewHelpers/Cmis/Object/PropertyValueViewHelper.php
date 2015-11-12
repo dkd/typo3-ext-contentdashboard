@@ -2,8 +2,6 @@
 namespace Dkd\Contentdashboard\ViewHelpers\Cmis\Object;
 
 use Dkd\PhpCmis\CmisObject\CmisObjectInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -15,7 +13,10 @@ class PropertyValueViewHelper extends AbstractViewHelper {
 	 * @param string $property
 	 * @return string
 	 */
-	public function render(CmisObjectInterface $cmisObject, $property) {
+	public function render($property, CmisObjectInterface $cmisObject = NULL) {
+		if ($cmisObject === NULL) {
+			$cmisObject = $this->renderChildren();
+		}
 		$property = $cmisObject->getProperty($property);
 		$propertyValue = NULL;
 		if ($property !== NULL) {

@@ -89,6 +89,7 @@ class DashboardController extends AbstractController
 		/** @var \Dkd\Aggregation\Service\InfluxDbService */
 		$influxDbService = $this->objectManager->get('Dkd\\Aggregation\\Service\\InfluxDbService');
 		$this->view->assign('socialCounter', $influxDbService->getSocialCounters($objectId));
+		$this->view->assign('updateHistoryData', $influxDbService->getUpdateHistoryData($objectId));
 
 		$jsonView = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Mvc\\View\\JsonView');
 		$jsonView->setControllerContext($this->controllerContext);
