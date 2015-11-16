@@ -7,6 +7,7 @@
             var contentContainer = $($this.attr('href'));
             if($this.hasClass('opened')) {
                 $this.removeClass('opened');
+                $this.parents('.asset-brief').removeClass('active');
                 contentContainer.hide();
             } else {
                 if ($this.attr('data-href')) {
@@ -16,6 +17,7 @@
                         contentContainer.hide();
                         contentContainer.html(data.content);
                         $this.addClass('opened');
+                        $this.parents('.asset-brief').addClass('active');
                         contentContainer.slideDown();
 
                         var lifeCycleGraph = $(contentContainer).find('.life-cycle-graph');

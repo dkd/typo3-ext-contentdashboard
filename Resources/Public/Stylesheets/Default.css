@@ -72,7 +72,7 @@
     border-bottom: 1px solid #CCCCCC;
 }
 
-.asset-brief:hover {
+.asset-brief:hover, .asset-brief.active {
     background-color: #ECECEC;
 }
 
