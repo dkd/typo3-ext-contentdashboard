@@ -1,6 +1,9 @@
 <?php
 namespace Dkd\Contentdashboard\ViewHelpers;
 
+use Dkd\CmisService\Factory\ObjectFactory;
+use Dkd\PhpCmis\Enum\RelationshipDirection;
+use Dkd\PhpCmis\SessionInterface;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -13,18 +16,20 @@ class ObjectRelationsViewHelper extends AbstractViewHelper {
 	 * @return array
 	 */
 	public function render($cmisObjectId) {
-		// TODO get relations for object
-		// dummy data
-		$relations = array(
-			array(
-				'type' => 'Page',
-				'path' => 'en/examplepage/gallery'
-			),
-			array(
-				'type' => 'Page',
-				'path' => 'en/examplepage/shop'
-			)
+		$session = $this->getCmisSession();
+		return $session->getRelationships(
+			$session->createObjectId($cmisObjectId),
+			TRUE,
+			RelationshipDirection::cast(RelationshipDirection::EITHER),
+			$session->getTypeDefinition('R:cm:references')
 		);
-		return $relations;
 	}
+
+	/**
+	 * @return SessionInterface
+	 */
+	protected function getCmisSession() {
+		return ObjectFactory::getInstance()->getCmisService()->getCmisSession();
+	}
+
 }

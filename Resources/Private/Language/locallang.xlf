@@ -25,6 +25,9 @@
             <trans-unit id="dashboard.assets.title" xml:space="preserve">
                 <source>Assets</source>
             </trans-unit>
+            <trans-unit id="dashboard.assets.contentlist" xml:space="preserve">
+                <source>Indexed assets</source>
+            </trans-unit>
             <trans-unit id="dashboard.assets.values" xml:space="preserve">
                 <source>Current values</source>
             </trans-unit>

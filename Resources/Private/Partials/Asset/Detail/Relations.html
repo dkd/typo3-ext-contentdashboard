@@ -1,16 +1,28 @@
 {namespace dash=Dkd\Contentdashboard\ViewHelpers}
 <div class="sectionDetail">
 <h4>Relations to object</h4>
-<table class="table tableRelations">
-    <tr>
-        <th>Path</th>
-        <th>Type</th>
-    </tr>
-    <f:for each="{dash:objectRelations(cmisObjectId: object.objectId)}" as="relation">
-        <tr>
-            <td>{relation.path}</td>
-            <td>{relation.type}</td>
-        </tr>
-    </f:for>
-</table>
+<f:alias map="{objects: '{dash:objectRelations(cmisObjectId: object.id)}'}">
+    <f:if condition="{objects.numItems}">
+        <f:else>
+            Object has no relations
+        </f:else>
+        <f:then>
+            <table class="table tableRelations">
+                <tr>
+                    <th>Path</th>
+                    <th>Type</th>
+                </tr>
+                <f:for each="{objects.objects}" as="relation">
+                    <tr>
+                        <td>{relation.path}</td>
+                        <td>{relation.type}</td>
+                    </tr>
+                </f:for>
+            </table>
+            <f:if condition="{objects.hasMore}">
+                <a href="#">VIEW ALL RELATIONSHIPS</a>
+            </f:if>
+        </f:then>
+    </f:if>
+</f:alias>
 </div>
