@@ -1,7 +1,7 @@
 {namespace dash=Dkd\Contentdashboard\ViewHelpers}
 <div class="sectionDetail">
 <h4>Relations to object</h4>
-<f:alias map="{objects: '{dash:objectRelations(cmisObjectId: object.id)}'}">
+<f:alias map="{objects: '{dash:objectRelations(cmisObjectId: \'{f:if(condition: object.id, then: object.id, else: object.objectId)}\')}'}">
     <f:if condition="{objects.numItems}">
         <f:else>
             Object has no relations
