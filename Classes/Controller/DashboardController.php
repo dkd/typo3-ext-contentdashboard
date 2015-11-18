@@ -142,18 +142,12 @@ class DashboardController extends AbstractController
 	 * @param string $folderId
 	 */
 	public function preserveAction($cmisObjectId, $folder = NULL) {
-		// TODO Move this to the forgetit extension
-		$client = new Client();
 		try {
-			$response = $client->post(self::MIDDLEWARE_URL . 'resource', array(
-				'body' => array(
-					'cmisServerId' => self::CMIS_SERVER_ID,
-					'cmisId' => $cmisObjectId,
-					// TODO calculate preservation value
-					'PV' => 1
-				)
-			))->json();
-			$this->signalSlotDispatcher->dispatch(__CLASS__, 'afterPreserveAction', array($cmisObjectId, $response));
+			// TODO calculate preservation value
+			$preservationValue = 1;
+			$preservationService = $this->objectManager->get('Dkd\\Pofconnector\\Service\\PoFMiddlewarePreservationService');
+			$response = $preservationService->preserve($cmisObjectId, $preservationValue);
+
 			$this->addFlashMessage('Task to preserve resource has been triggered with id ' . $response['taskId']);
 		} catch (RequestException $e) {
 			$this->addFlashMessage('Error while preserving the resource. Details: ' . $e->getMessage(), '', AbstractMessage::ERROR);

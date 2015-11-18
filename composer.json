@@ -34,8 +34,8 @@
         "squizlabs/php_codesniffer": "1.*",
         "phpunit/phpunit": "~4.4.5",
         "mikey179/vfsStream": "~1.4.0",
-        "typo3-ci/typo3sniffpool": "dev-master",
-        "typo3-ci/typo3cms": "dev-master",
+        "typo3-ci/typo3sniffpool": "*",
+        "typo3-ci/typo3cms": "*",
         "typo3/cms": "~6.2.9"
     },
     "repositories": [
