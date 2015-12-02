@@ -9,14 +9,22 @@
         <f:then>
             <table class="table tableRelations">
                 <tr>
-                    <th>Path</th>
+                    <th>ID</th>
                     <th>Type</th>
+                    <th>Source</th>
+                    <th>Target</th>
+                    <th>Created by</th>
                 </tr>
                 <f:for each="{objects.objects}" as="relation">
-                    <tr>
-                        <td>{relation.path}</td>
-                        <td>{relation.type}</td>
-                    </tr>
+                    <f:alias map="{source: '{dash:extract(propertyName: \'cmis:sourceId\', object: relation) -> dash:object()}', target: '{dash:extract(propertyName: \'cmis:targetId\', object: relation) -> dash:object()}'}">
+                        <tr>
+                            <td>{relation.id}</td>
+                            <td>{dash:extract(propertyName: 'cmis:objectTypeId', object: relation)}</td>
+                            <td>{f:if(condition: '{object.objectId} == {source.id}', then: '[self]', else: source.name)}</td>
+                            <td>{f:if(condition: '{object.objectId} == {target.id}', then: '[self]', else: target.name)}</td>
+		            <td>{dash:extract(propertyName: 'cmis:createdBy', object: relation)}</td>
+                        </tr>
+                    </f:alias>
                 </f:for>
             </table>
             <f:if condition="{objects.hasMore}">
