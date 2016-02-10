@@ -1,15 +1,16 @@
 <h2>
-	<f:if condition="{folder.folderParent}">
-		<f:link.action action="index" arguments="{folder: folder.folderParent.id}">{folder.folderParent.name}</f:link.action> /
-	</f:if>
-	<f:link.action action="index" arguments="{folder: folder.id}">{folder.name}</f:link.action>
+	  <f:if condition="{folder.folderParent}">
+		    <f:link.action action="index" arguments="{folder: folder.folderParent.id}">{folder.folderParent.name}</f:link.action> /
+	  </f:if>
+	  <f:link.action action="index" arguments="{folder: folder.id}">{folder.name}</f:link.action>
 </h2>
-<f:render partial="Asset/Detail" arguments="{object: folder}" />
+
+<f:render partial="Asset/Detail" arguments="{object: folder, socialCounter: socialCounter, updateHistoryData: updateHistoryData}" />
 
 <h3>
-	<f:translate key="dashboard.assets.contentlist" />
+	  <f:translate key="dashboard.assets.contentlist" />
 </h3>
 
 <div id="dashboard-asset-list">
-	{f:render(partial: 'Asset/Brief', arguments: '{_all}') -> f:for(each: folder.children, as: 'object', iteration: 'iteration')}
+	  {f:render(partial: 'Asset/Brief', arguments: '{_all}') -> f:for(each: folder.children, as: 'object', iteration: 'iteration')}
 </div>
