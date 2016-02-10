@@ -1,4 +1,11 @@
-(function($) {
+define('TYPO3/CMS/Contentdashboard/Dashboard', [
+    'jquery',
+    'TYPO3/CMS/Contentdashboard/d3',
+    'TYPO3/CMS/Contentdashboard/d3dateline',
+    'TYPO3/CMS/Contentdashboard/d3datelineCallbacks'
+], function (
+    $
+) {
     $(document).ready(function(){
         var spinner = '<div class="text-center"><i class="fa fa-spinner fa-spin"></i></div>';
         $('.object-detail-trigger').on('click', function (e) {
@@ -30,4 +37,5 @@
             }
         });
     });
-})(jQuery);
+    return {};
+});
