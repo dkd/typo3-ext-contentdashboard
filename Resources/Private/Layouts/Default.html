@@ -1,6 +1,7 @@
 {namespace dash=Dkd\Contentdashboard\ViewHelpers}
-<f:be.container pageTitle="Content Dashboard" enableClickMenu="false" includeCssFiles="{dash:stylesheets()}">
-    <dash:Javascript />
+{namespace cmis=Dkd\CmisService\ViewHelpers}
+<f:be.container pageTitle="Content Dashboard" enableClickMenu="false" includeCssFiles="{cmis:stylesheets()}">
+    <cmis:Javascript />
     <div class="typo3-fullDoc">
         <div id="typo3-docheader">
             <div class="typo3-docheader-functions">

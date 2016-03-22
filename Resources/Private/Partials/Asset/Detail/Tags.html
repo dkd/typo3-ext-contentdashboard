@@ -1,7 +1,8 @@
 {namespace dash=Dkd\Contentdashboard\ViewHelpers}
+{namespace cmis=Dkd\CmisService\ViewHelpers}
 <div class="sectionDetail">
 <h4>Tags</h4>
-<f:for each="{dash:objectTags(cmisObjectId: object.objectId)}" as="tag">
+<f:for each="{cmis:objectTags(cmisObjectId: object.objectId)}" as="tag">
     <span class="label label-default">{tag}</span>
 </f:for>
 </div>

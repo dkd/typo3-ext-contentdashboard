@@ -1,4 +1,4 @@
-{namespace dash=Dkd\Contentdashboard\ViewHelpers}
+{namespace cmis=Dkd\CmisService\ViewHelpers}
 <div class="sectionDetail">
     <h4>Update history</h4>
     <table class="table tableUpdateHistory">
@@ -11,7 +11,7 @@
             <tr>
                 <td>{dataEntry.time -> f:format.crop(maxCharacters: 19) -> f:format.date(format:'d.m.Y - H:i:s')}</td>
                 <td>{dataEntry.action}</td>
-                <td>{dataEntry.authorUuid -> dash:cmis.getObject() -> dash:cmis.object.propertyValue(property: 'cmis:name')}</td>
+                <td>{dataEntry.authorUuid -> cmis:object.get() -> cmis:object.propertyValue(property: 'cmis:name')}</td>
             </tr>
         </f:for>
     </table>

@@ -1,0 +1,16 @@
+{namespace cmis=Dkd\CmisService\ViewHelpers}
+<div class="sectionDetail">
+	<h4>Versions</h4>
+	<table class="table tableUpdateHistory">
+		<tr>
+			<th>Time</th>
+			<th>Author</th>
+		</tr>
+		<f:for each="{versions}" as="version">
+			<tr>
+				<td>{dataEntry.id}</td>
+				<td></td>
+			</tr>
+		</f:for>
+	</table>
+</div>

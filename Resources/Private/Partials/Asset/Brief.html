@@ -1,4 +1,5 @@
 {namespace dash=Dkd\Contentdashboard\ViewHelpers}
+{namespace cmis=Dkd\CmisService\ViewHelpers}
 <div class="container asset asset-brief">
     <h4>
         <f:if condition="{object.baseType.id} == 'cmis:folder'">
@@ -53,23 +54,23 @@
         </div>
         <div class="col-xs-5">
             <h4><f:translate key="dashboard.assets.metaData" /></h4>
-            <f:if condition="{dash:cmis.object.propertyValue(cmisObject: object, property: 'exif:dateTimeOriginal')}">
+            <f:if condition="{cmis:object.propertyValue(cmisObject: object, property: 'exif:dateTimeOriginal')}">
                 <f:then>
                     <span>
-                        Creation date (exif): <f:format.date format="d.m.Y - H:i:s"><dash:cmis.object.propertyValue cmisObject="{object}" property="exif:dateTimeOriginal" /></f:format.date>
+                        Creation date (exif): <f:format.date format="d.m.Y - H:i:s"><cmis:object.propertyValue cmisObject="{object}" property="exif:dateTimeOriginal" /></f:format.date>
                     </span>
                 </f:then>
                 <f:else>
                     <div class="labels">
-                        Creation date: <f:format.date format="d.m.Y - H:i:s"><dash:cmis.object.propertyValue cmisObject="{object}" property="cmis:creationDate" /></f:format.date>
-                    </div>        
+                        Creation date: <f:format.date format="d.m.Y - H:i:s"><cmis:object.propertyValue cmisObject="{object}" property="cmis:creationDate" /></f:format.date>
+                    </div>
                 </f:else>
             </f:if>
             <div class="labels">
-                Created By: <dash:cmis.object.propertyValue cmisObject="{object}" property="cmis:createdBy" />
+                Created By: <cmis:object.propertyValue cmisObject="{object}" property="cmis:createdBy" />
             </div>
             <div class="labels">
-                CMIS Id: <input value="{dash:cmis.object.propertyValue(cmisObject: '{object}', property: 'cmis:objectId')}" onclick="this.select()" class="contentdashboard-item-attribute-cmisid" /><br />
+                CMIS Id: <input value="{cmis:object.propertyValue(cmisObject: '{object}', property: 'cmis:objectId')}" onclick="this.select()" class="contentdashboard-item-attribute-cmisid" /><br />
             </div>
         </div>
         <div class="col-xs-5 asset-brief-meters">

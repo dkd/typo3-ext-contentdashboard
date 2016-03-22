@@ -1,7 +1,8 @@
 {namespace dash=Dkd\Contentdashboard\ViewHelpers}
+{namespace cmis=Dkd\CmisService\ViewHelpers}
 <div class="sectionDetail">
 <h4>Relations to object</h4>
-<f:alias map="{objects: '{dash:objectRelations(cmisObjectId: \'{f:if(condition: object.id, then: object.id, else: object.objectId)}\')}'}">
+<f:alias map="{objects: '{cmis:objectRelations(cmisObjectId: \'{f:if(condition: object.id, then: object.id, else: object.objectId)}\')}'}">
     <f:if condition="{objects.numItems}">
         <f:else>
             Object has no relations
@@ -16,13 +17,13 @@
                     <th>Created by</th>
                 </tr>
                 <f:for each="{objects.objects}" as="relation">
-                    <f:alias map="{source: '{dash:extract(propertyName: \'cmis:sourceId\', object: relation) -> dash:object()}', target: '{dash:extract(propertyName: \'cmis:targetId\', object: relation) -> dash:object()}'}">
+                    <f:alias map="{source: '{dash:extract(propertyName: \'cmis:sourceId\', object: relation) -> cmis:object()}', target: '{dash:extract(propertyName: \'cmis:targetId\', object: relation) -> cmis:object()}'}">
                         <tr>
                             <td>{relation.id}</td>
                             <td>{dash:extract(propertyName: 'cmis:objectTypeId', object: relation)}</td>
                             <td>{f:if(condition: '{object.objectId} == {source.id}', then: '[self]', else: source.name)}</td>
                             <td>{f:if(condition: '{object.objectId} == {target.id}', then: '[self]', else: target.name)}</td>
-		            <td>{dash:extract(propertyName: 'cmis:createdBy', object: relation)}</td>
+				            <td>{dash:extract(propertyName: 'cmis:createdBy', object: relation)}</td>
                         </tr>
                     </f:alias>
                 </f:for>
