@@ -1,0 +1,28 @@
+{namespace cmis=Dkd\CmisService\ViewHelpers}
+{namespace dash=Dkd\Contentdashboard\ViewHelpers}
+<div class="sectionDetail">
+	<h4>Properties</h4>
+	<table class="table tableUpdateHistory">
+		<tr>
+			<th>Display name</th>
+			<th>Machine name</th>
+			<th>Value</th>
+		</tr>
+		<f:for each="{object.properties}" as="property" key="name">
+			<tr>
+				<td>{property.displayName}</td>
+				<td>{name}</td>
+				<td>
+					<f:switch expression="{property.type}">
+						<f:case value="datetime">
+							{cmis:object.propertyValue(cmisObject: object, property: name) -> f:format.date()}
+						</f:case>
+						<f:case default="1">
+							{cmis:object.propertyValue(cmisObject: object, property: name)}
+						</f:case>
+					</f:switch>
+				</td>
+			</tr>
+		</f:for>
+	</table>
+</div>
