@@ -1,3 +1,4 @@
+{namespace dash=Dkd\Contentdashboard\ViewHelpers}
 <h2>
 	  <f:if condition="{folder.folderParent}">
 		    <f:link.action action="index" arguments="{folder: folder.folderParent.id}">{folder.folderParent.name}</f:link.action> /
@@ -7,10 +8,19 @@
 
 <f:render partial="Asset/Detail" arguments="{object: folder, socialCounter: socialCounter, updateHistoryData: updateHistoryData}" />
 
+<div class="pull-right">
+	<f:render partial="SortingForm" />
+</div>
+
 <h3>
 	  <f:translate key="dashboard.assets.contentlist" />
 </h3>
 
+
 <div id="dashboard-asset-list">
-	  {f:render(partial: 'Asset/Brief', arguments: '{_all}') -> f:for(each: folder.children, as: 'object', iteration: 'iteration')}
+	  {f:render(partial: 'Asset/Brief', arguments: '{_all}')
+		-> f:for(each: '{folder.children -> dash:sortArray(
+			sortBy: \'{dash:sessionVariable(set: \\'contentdashboard_sorting\\', name: \\'sortBy\\')}\',
+			direction: \'{dash:sessionVariable(set: \\'contentdashboard_sorting\\', name: \\'direction\\')}\')}',
+		as: 'object', iteration: 'iteration')}
 </div>

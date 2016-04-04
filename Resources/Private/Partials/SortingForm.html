@@ -1,0 +1,22 @@
+{namespace dash=Dkd\Contentdashboard\ViewHelpers}
+
+<f:form action="setSorting" id="sortingForm" class="form-inline">
+
+	<f:translate key="dashboard.sort.header" />
+
+	<div class="form-group">
+		<f:form.select name="sortBy" options="{settings.sortyByProperties -> dash:flipArray()}" class="form-control input-sm"
+		               additionalAttributes="{onchange: 'document.getElementById(\'sortingForm\').submit();'}"
+		               value="{dash:sessionVariable(set: 'contentdashboard_sorting', name: 'sortBy')}" />
+	</div>
+
+	<div class="form-group">
+		<f:form.select name="direction" options="{asc: 'asc', desc: 'desc'}"  class="form-control input-sm"
+		               additionalAttributes="{onchange: 'document.getElementById(\'sortingForm\').submit();'}"
+		               value="{dash:sessionVariable(set: 'contentdashboard_sorting', name: 'direction')}" />
+	</div>
+
+	<div class="form-group">
+		<f:form.submit value="{f:translate(key: 'dashboard.sort.button')}" class="btn btn-sm btn-primary" />
+	</div>
+</f:form>

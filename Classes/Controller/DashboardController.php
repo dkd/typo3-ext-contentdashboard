@@ -13,6 +13,7 @@ use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use GuzzleHttp\Client;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 
 /**
  * Class DashboardController
@@ -43,6 +44,24 @@ class DashboardController extends AbstractController
 		return $cmisSession->getObject($objectId);
 	}
 
+	/**
+	 * @param string $sortBy
+	 * @param string $direction
+	 */
+	public function setSortingAction($sortBy, $direction) {
+		$referrer = $this->request->getInternalArgument('__referrer');
+		$this->getBackendUserAuthentication()->setAndSaveSessionData(
+			'contentdashboard_sorting', array(
+				'sortBy' => $sortBy,
+				'direction' => $direction
+			)
+		);
+		$this->redirect(
+			$referrer['@action'],
+			$referrer['@controller'],
+			$referrer['@extension']
+		);
+	}
 
 	/**
 	 * @param string $folder The ID of a CMIS folder to be browsed
@@ -195,5 +214,12 @@ class DashboardController extends AbstractController
 			return $configuration['data']['sDEF']['lDEF']['folder']['vDEF'];
 		}
 		return NULL;
+	}
+
+	/**
+	 * @return BackendUserAuthentication
+	 */
+	protected function getBackendUserAuthentication() {
+		return $GLOBALS['BE_USER'];
 	}
 }

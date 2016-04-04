@@ -22,6 +22,12 @@
             <trans-unit id="view.archive" xml:space="preserve">
                 <source>Archive</source>
             </trans-unit>
+            <trans-unit id="dashboard.sort.header" xml:space="preserve">
+                <source>Sorting:</source>
+            </trans-unit>
+            <trans-unit id="dashboard.sort.button" xml:space="preserve">
+                <source>sort</source>
+            </trans-unit>
             <trans-unit id="dashboard.assets.title" xml:space="preserve">
                 <source>Assets</source>
             </trans-unit>

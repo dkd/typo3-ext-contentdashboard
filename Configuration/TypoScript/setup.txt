@@ -1,0 +1,7 @@
+module.tx_contentdashboard.settings {
+	sortyByProperties {
+		Name = cm:name
+		Title = cm:title
+		Author = cm:author
+	}
+}

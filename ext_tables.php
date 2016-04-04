@@ -3,6 +3,8 @@ if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
 
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Content Dashboard settings');
+
 if (TYPO3_MODE === 'BE') {
 	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
 		'Dkd.Contentdashboard',
@@ -10,7 +12,7 @@ if (TYPO3_MODE === 'BE') {
 		'tx_contentdashboard_dashboard',
 		'after:template',
 		array(
-			'Dashboard' => 'index,detail,delete,preserve,files',
+			'Dashboard' => 'index,detail,delete,preserve,files,setSorting',
 			'Archive' => 'index,restore,deleteRestoreTask',
 			'DashboardAjax' => 'lifeCycleData'
 		),
