@@ -207,7 +207,7 @@ class DashboardController extends AbstractController
 	 * @return array|NULL
 	 */
 	protected function getCmisFalStorageRecordFolderConfigurationOption() {
-		$condition = 'driver = \'cmis\' AND is_online = 1 AND hidden = 0 AND deleted = 0';
+        $condition = 'driver = \'cmis\' AND is_online = 1 AND deleted = 0';
 		$record = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow('configuration', 'sys_file_storage', $condition);
 		if ($record) {
 			$configuration = GeneralUtility::xml2array($record['configuration']);
