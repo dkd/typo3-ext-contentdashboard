@@ -6,6 +6,7 @@
 	  <f:link.action action="index" arguments="{folder: folder.id}">{folder.name}</f:link.action>
 </h2>
 
+<f:render partial="Asset/Meters" arguments="{object: folder}" />
 <f:render partial="Asset/Detail" arguments="{object: folder, socialCounter: socialCounter, updateHistoryData: updateHistoryData}" />
 
 <div class="pull-right">
