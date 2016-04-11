@@ -1,7 +1,7 @@
 module.tx_contentdashboard.settings {
 	sortyByProperties {
 		Name = cm:name
-		Title = cm:title
-		Author = cm:author
+		MB = dkd:typo3:forgettable:memory_buoyancy
+		PV = dkd:typo3:forgettable:preservation_value
 	}
 }
