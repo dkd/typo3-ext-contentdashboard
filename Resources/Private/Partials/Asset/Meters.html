@@ -6,7 +6,7 @@
         <f:translate key="dashboard.assets.values.preservation" />:
     </div>
     <div class="col-xs-8 meter-container">
-        <dash:meter value="{cmis:object.propertyValue(cmisObject: object, property: 'dkd:typo3:forgettable:preservation_value')}" />
+        <dash:pv value="{cmis:object.propertyValue(cmisObject: object, property: 'dkd:typo3:forgettable:preservation_value')}"/>
     </div>
 </div>
 <div class="row">
@@ -14,6 +14,6 @@
         <f:translate key="dashboard.assets.values.buoyancy" />:
     </div>
     <div class="col-xs-8 meter-container">
-        <dash:meter value="{cmis:object.propertyValue(cmisObject: object, property: 'dkd:typo3:forgettable:memory_buoyancy')}" />
+        <dash:mb value="{cmis:object.propertyValue(cmisObject: object, property: 'dkd:typo3:forgettable:memory_buoyancy')}"/>
     </div>
 </div>

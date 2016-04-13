@@ -15,8 +15,8 @@ class StylesheetsViewHelper extends AbstractResourcesViewHelper {
 	 * @return array
 	 */
 	public function render() {
-		$path = $this->getPublicResourcePath();
-		$stylesheets = array();
+        $path = $this->getPublicResourcePath();
+        $stylesheets = array();
 		if (TRUE === $this->isCoreVersionBelowSeven()) {
 			$doc = $this->getDocInstance();
 			$pageRenderer = $doc->getPageRenderer();

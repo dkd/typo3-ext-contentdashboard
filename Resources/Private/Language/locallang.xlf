@@ -49,22 +49,40 @@
             <trans-unit id="dashboard.assets.meters.noValue" xml:space="preserve">
                 <source>No value</source>
             </trans-unit>
-            <trans-unit id="dashboard.assets.meters.values.0" xml:space="preserve">
+            <trans-unit id="dashboard.assets.meters.values.pv.0" xml:space="preserve">
                 <source>Forget</source>
             </trans-unit>
-            <trans-unit id="dashboard.assets.meters.values.1" xml:space="preserve">
+            <trans-unit id="dashboard.assets.meters.values.pv.1" xml:space="preserve">
+                <source>Ash</source>
+            </trans-unit>
+            <trans-unit id="dashboard.assets.meters.values.pv.2" xml:space="preserve">
+                <source>Wood</source>
+            </trans-unit>
+            <trans-unit id="dashboard.assets.meters.values.pv.3" xml:space="preserve">
+                <source>Bronze</source>
+            </trans-unit>
+            <trans-unit id="dashboard.assets.meters.values.pv.4" xml:space="preserve">
+                <source>Silver</source>
+            </trans-unit>
+            <trans-unit id="dashboard.assets.meters.values.pv.5" xml:space="preserve">
+                <source>Gold</source>
+            </trans-unit>
+            <trans-unit id="dashboard.assets.meters.values.mb.0" xml:space="preserve">
+                <source>Forget</source>
+            </trans-unit>
+            <trans-unit id="dashboard.assets.meters.values.mb.1" xml:space="preserve">
                 <source>Cold</source>
             </trans-unit>
-            <trans-unit id="dashboard.assets.meters.values.2" xml:space="preserve">
+            <trans-unit id="dashboard.assets.meters.values.mb.2" xml:space="preserve">
                 <source>Neutral</source>
             </trans-unit>
-            <trans-unit id="dashboard.assets.meters.values.3" xml:space="preserve">
+            <trans-unit id="dashboard.assets.meters.values.mb.3" xml:space="preserve">
                 <source>Luke-warm</source>
             </trans-unit>
-            <trans-unit id="dashboard.assets.meters.values.4" xml:space="preserve">
+            <trans-unit id="dashboard.assets.meters.values.mb.4" xml:space="preserve">
                 <source>Warm</source>
             </trans-unit>
-            <trans-unit id="dashboard.assets.meters.values.5" xml:space="preserve">
+            <trans-unit id="dashboard.assets.meters.values.mb.5" xml:space="preserve">
                 <source>Hot</source>
             </trans-unit>
         </body>

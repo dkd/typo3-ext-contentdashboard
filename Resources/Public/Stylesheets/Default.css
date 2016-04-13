@@ -116,6 +116,14 @@ ul.meter li.empty {
     border-color: #b5b5b5;
 }
 
+.mbbox {
+    width:4em;
+    height:1.2em;
+    display:inline-block;
+    margin-right:0.7em;
+    border:1px solid #858585;
+}
+
 .object-detail-trigger.opened i {
     -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
