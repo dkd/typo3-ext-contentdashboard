@@ -15,7 +15,6 @@ class PvViewHelper extends AbstractViewHelper {
 	 * @return string
 	 */
     public function render($value, $maximum = 5) {
-        $value = rand(1,5);
         if (-1 === (integer) $value) {
             return $this->translate('dashboard.assets.meters.noValue');
         }

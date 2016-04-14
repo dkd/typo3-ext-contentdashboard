@@ -10,13 +10,10 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 class MbViewHelper extends AbstractViewHelper {
 
     /**
-     * @param integer $value
-     * @param integer $maximum
+     * @param double $value
      * @return string
      */
-    public function render($value, $maximum = 5) {
-        $value = mt_rand() / mt_getrandmax();
-
+    public function render($value) {
         if (-1 === (integer) $value) {
             return $this->translate('dashboard.assets.meters.noValue');
         }
@@ -58,6 +55,6 @@ class MbViewHelper extends AbstractViewHelper {
         $color .= (strlen($b) < 2?'0':'').$b;
 
         return '#'.$color;
-              }
+    }
 
 }
