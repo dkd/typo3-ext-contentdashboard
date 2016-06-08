@@ -2,12 +2,22 @@
     "name": "dkd/contentdashboard",
     "type": "typo3-cms-extension",
     "description": "TYPO3 Extension Content Dashboard",
-    "keywords": ["cmis", "content dashboard", "typo3"],
-    "homepage": "https://phabricator.dkd.de/diffusion/EXTCD/",
+    "keywords": ["cmis", "content dashboard", "typo3", "forget it", "big data"],
+    "homepage": "http://www.dkd.de/",
     "license": "GPL-2.0",
     "authors": [
         {
             "name": "Sascha Egerer",
+            "homepage": "http://www.dkd.de",
+            "role": "Developer"
+        },
+        {
+            "name": "Claus Due",
+            "homepage": "http://www.dkd.de",
+            "role": "Developer"
+        },
+        {
+            "name": "Johannes Goslar",
             "homepage": "http://www.dkd.de",
             "role": "Developer"
         }
@@ -29,6 +39,10 @@
             "typo3/sysext/fluid",
             "typo3/sysext/lang"
         ]
+    },
+    "require": {
+        "typo3/cms": "^7.6",
+        "dkd/cmis-service": "~1.0"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "1.*",
